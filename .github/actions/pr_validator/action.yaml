@@ -11,4 +11,4 @@ runs:
       id: pr_validator
       shell: bash
       run: |-
-        python3 ./.github/actions/pr_validator/pr_validator.py --token=${GITHUB_TOKEN}
+        python3 ./.github/actions/pr_validator/pr_validator.py ${GITHUB_TOKEN}
