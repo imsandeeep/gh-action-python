@@ -1,0 +1,15 @@
+name: Validate PR
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: ['opened', 'edited', 'reopened', 'synchronize']
+
+jobs:
+  pull_request_validator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/pr_validator_action
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,14 @@
+name: PR validator action
+description: Validate PR body
+#inputs:
+#  gh_token:
+#    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Validate PR body
+      id: pr_validator
+      shell: bash
+      run: |-
+        python3 ./.github/actions/pr_validator/pr_validator.py --token=${GITHUB_TOKEN}
