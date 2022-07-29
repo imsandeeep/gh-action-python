@@ -2,11 +2,13 @@ import requests
 import argparse
 
 
-def validate_pr_body(gh_token):
+def validate_pr_body(gh_token="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"):
     url = "https://api.github.com/repos/imsandeeep/gh-action-python/pulls/1"
-    response = requests.get(url, auth=("imsandeeep", gh_token))
-    print(response.json())
-    return True
+    response = requests.get(url, headers={'Content-Type': 'application/json'}, auth=("imsandeeep", gh_token))
+    # pr_details = response.json()
+    pr_description = response.json()['body']
+
+    return pr_description.startswith('ADO')
 
 
 def get_gh_token():
@@ -17,7 +19,7 @@ def get_gh_token():
 
 
 def main():
-    gh_token = get_gh_token()
+    gh_token = str(get_gh_token())
     is_body_valid = validate_pr_body(gh_token)
     if not is_body_valid:
         print("PR body is not valid")
