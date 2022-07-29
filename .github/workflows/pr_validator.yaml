@@ -10,6 +10,9 @@ jobs:
   pull_request_validator:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/pr_validator_action
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate PR
+        env: 
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        uses: ./.github/actions/pr_validator
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
