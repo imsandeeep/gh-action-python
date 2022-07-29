@@ -1,2 +1,2 @@
 # gh-action-python
-Python script to validate Pull request body
+Python script to validate Pull request body.
